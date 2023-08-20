@@ -40,7 +40,7 @@ const InvoiceForm = () => {
     
       const randomNum = Math.floor(Math.random() * 9000) + 1000;
     
-      return `#${randomLetters}${randomNum}`;
+      return `${randomLetters}${randomNum}`;
     }
     
     const invoiceId = generateCustomId()
@@ -67,7 +67,6 @@ const InvoiceForm = () => {
       }; 
       
       function onSubmit (data) {
-        console.log(data)
         handlePost(data)
         const newInvoiceList = {
           id: invoiceId,

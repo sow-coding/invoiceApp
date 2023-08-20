@@ -29,11 +29,44 @@
   align-items: center;
   justify-content: space-around;
 }
+.listOfInvoices .link .invoice .invoiceLeft span {
+  color: #7E88C3;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+}
+.listOfInvoices .link .invoice .invoiceLeft h4 {
+  color: #0C0E16;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+}
+.listOfInvoices .link .invoice .invoiceLeft p {
+  color: #7E88C3;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.1px;
+}
 .listOfInvoices .link .invoice .invoiceRight {
   display: flex;
   width: 35%;
   align-items: center;
   justify-content: space-around;
+}
+.listOfInvoices .link .invoice .invoiceRight h2 {
+  color: #0C0E16;
+  text-align: right;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 160% */
+  letter-spacing: -0.25px;
 }
 
 .invoiceDetails {
@@ -72,12 +105,53 @@
 .invoiceDetails .invoiceDetailsCenter {
   width: 75%;
   height: 15%;
-  background-color: aquamarine;
   border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+.invoiceDetails .invoiceDetailsCenter .invoiceDetailsCenterLeft {
+  display: flex;
+  width: 15%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50px;
+}
+.invoiceDetails .invoiceDetailsCenter .invoiceDetailsCenterLeft div {
+  width: 70% !important;
+  margin-left: 25px;
+}
+.invoiceDetails .invoiceDetailsCenter .invoiceDetailsCenterLeft p {
+  color: #888EB0;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 115.385% */
+  letter-spacing: -0.1px;
+}
+.invoiceDetails .invoiceDetailsCenter .invoiceDetailsCenterRight {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
 }
 .invoiceDetails .invoiceDetailsBottom {
   width: 75%;
   height: 65%;
   border-radius: 8px;
-  background-color: cadetblue;
+  background: #FFF;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.invoiceDetails .invoiceDetailsBottom .invoiceDetailsBottomTop {
+  display: flex;
+  justify-content: space-between;
+}
+.invoiceDetails .invoiceDetailsBottom .invoiceDetailsBottomCenter {
+  display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=listOfInvoices.module.css.map */

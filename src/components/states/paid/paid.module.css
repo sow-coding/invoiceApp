@@ -1,0 +1,22 @@
+.paid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background: #cefded;
+  width: 30%;
+  height: 40px;
+}
+.paid svg {
+  width: 12px;
+  height: 12px;
+}
+.paid .paidText {
+  color: #33D69F;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+  margin-left: 15px;
+}/*# sourceMappingURL=paid.module.css.map */

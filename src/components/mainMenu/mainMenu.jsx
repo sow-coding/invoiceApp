@@ -4,15 +4,17 @@ import NewInvoiceButton from "../newInvoiceBtn/newInvoiceBtn"
 import styles from "./mainMenu.module.css"
 import { invoiceState } from "@/app/invoiceState"
 import { showInvoiceDetails } from "@/app/showInvoiceDetails"
+import { invoiceListState } from "@/app/invoiceListState"
 
 
 function MainMenu(props) {
     const display = useRecoilValue(showInvoiceDetails)
+    const invoicesState = useRecoilValue(invoiceListState);
     return (
     <div className={`${styles.mainMenu} ${display && styles.displayNone}`}>
         <div className={`${styles.mainMenuLeft}`}>
             <h1>Invoices</h1>
-            <p>There are {props.numberOfInvoice} total invoices</p>
+            <p>There are {invoicesState.length} total invoices</p>
         </div>
         <div className={`${styles.mainMenuRight}`}>
             <div className={`${styles.filterButton}`} >
