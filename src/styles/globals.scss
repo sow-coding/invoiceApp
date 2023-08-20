@@ -1,0 +1,19 @@
+@import "../components/variables";
+
+.relative {
+    position: relative!important;
+}
+
+body {
+    font-family: $font;
+    margin: 0 0;
+    width: 100vw;
+    height: 90vh;
+    overflow-x: hidden;
+    background-color: #f8f8fb;
+    & .homePage {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

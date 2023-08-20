@@ -1,0 +1,39 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0px 24px 24px 0px;
+  width: 6%;
+  height: 100vh;
+  background-color: #373B53;
+  position: fixed;
+}
+.sideBar .logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 24px 24px 0px;
+  background-color: #7C5DFA;
+  width: 100%;
+  height: 103px;
+}
+.sideBar .sideBarBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 30%;
+}
+.sideBar .sideBarBottom .shadowMode:hover {
+  cursor: pointer;
+}
+.sideBar .sideBarBottom .row {
+  width: 100%;
+  height: 1px;
+  background-color: #888EB0;
+}
+.sideBar .sideBarBottom .userImage:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=sideBar.module.css.map */

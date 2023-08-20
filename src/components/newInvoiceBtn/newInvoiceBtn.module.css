@@ -1,0 +1,19 @@
+.NewInvoiceButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 150px;
+  height: 48px;
+  background-color: #7C5DFA;
+  color: #FFF;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+  border-radius: 24px;
+}
+.NewInvoiceButton:hover {
+  cursor: pointer;
+  background-color: #9277FF;
+}/*# sourceMappingURL=newInvoiceBtn.module.css.map */

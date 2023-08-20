@@ -1,0 +1,21 @@
+@import "../variables";
+
+.NewInvoiceButton {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 150px;
+    height: 48px;
+    background-color: $purple;
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 100% */
+    letter-spacing: -0.25px;
+    border-radius: 24px;
+    &:hover {
+        cursor: pointer;
+        background-color: $purpleHover;
+    }
+}

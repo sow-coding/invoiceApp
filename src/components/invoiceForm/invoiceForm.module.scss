@@ -1,0 +1,342 @@
+@import "../variables";
+
+
+.scrollableContainer {
+    width: 100vw;
+    position: fixed;
+    height: 100vh;
+    display: flex;
+
+    & .newInvoiceFormContainer {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        background-color: white; /* Semi-transparent black background */
+        
+    }
+    & .newInvoiceFormQuit {
+        width: 50%;
+        height: 100vh;
+        background-color: transparent;
+        
+    }
+    & nav {
+        width: 12%;
+        
+    }
+    & form {
+        width: 86%;
+        max-height: 100vh; /* Adjust the desired maximum height */
+        overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+    }
+}
+
+.invoiceForm {
+    //width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & input {
+        border-radius: 4px;
+        border: 1px solid var(--05, #DFE3FA);
+        background: #FFF;
+        padding-left: 15px;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+    }
+    & label {
+        margin-left: 10px;
+        margin-bottom: 7px;
+    }
+    & .formTitle {
+        color: $black;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px; /* 133.333% */
+        letter-spacing: -0.5px;
+    }
+    & .invoiceFormTop {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        & .billFromTitle {
+            color: $purple;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 15px; /* 100% */
+            letter-spacing: -0.25px;
+        }
+        & .billFromTop {
+            display: flex;
+            flex-direction: column;
+            & input {
+                width: 95%;
+                height: 48px;
+            }
+        }
+        & .billFromBottom {
+            display: flex;
+            justify-content: space-between;
+            width: 95%;
+            margin-top: 20px;
+            & input {
+                height: 48px;
+            }
+            & .city {
+                width: 27%;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+                }
+            }
+            & .postCode {
+                width: 27%;
+
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+
+                }
+            }
+            & .country {
+                width: 27%;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+
+                }
+            }
+        }
+    }
+    
+    & .invoiceFormCenter {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        width: 95%;
+        & .billToTop {
+            display: flex;
+            flex-direction: column; 
+            & .billToTitle {
+                color: $purple;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 15px; /* 100% */
+                letter-spacing: -0.25px;
+            }
+            & input {
+                height: 48px;
+            }
+            & .clientName {
+                width: 90%;
+                margin: 10px 0;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+                }
+            }
+            & .clientEmail {
+                width: 90%;
+                margin: 10px 0;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+
+                }
+            }
+            & .clientStreetAddress {
+                margin-top: 10px;
+                margin-bottom: 20px;
+                width: 90%;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+                    
+                }
+            }
+        }
+        & .billToCenter {
+            display: flex;
+            justify-content: space-between;
+            width: 89%;
+            & input {
+                height: 48px;
+            }
+            & .clientCity {
+                width: 27%;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+                }
+            }
+            & .clientPostCode {
+                width: 27%;
+
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+
+                }
+            }
+            & .clientCountry {
+                width: 27%;
+                & input {
+                    width: 100%;
+                    margin-top: 7px;
+
+                }
+            }
+        }
+    }
+    
+   & .invoiceFormBottom {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        & .invoiceFormBottomTop {
+            display: flex;
+            flex-direction: column;
+            & .invoiceFormBottomTopTop {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                width: 95%;
+                & input {
+                    height: 48px;
+                }
+                & .invoiceDate {
+                    width: 45%;
+                    & input {
+                        width: 100%;
+                        margin-top: 7px;
+                    }
+                }
+                & .paymentTerms {
+                    width: 45%;
+                    & input {
+                        width: 100%;
+                        margin-top: 7px;
+                    }
+                }
+            }
+            & .invoiceFormBottomTopBottom {
+                display: flex;
+                flex-direction: column;
+                & input {
+                    width: 95%;
+                    height: 48px;
+                }
+            }
+        }
+    }
+    & .formButtons {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        & .formButtonsRight {
+            display: flex;
+            justify-content: space-between;
+            width: 43%;
+        }
+    }
+}
+
+
+/*AJOUT TEMPORAIRE*/
+
+.itemList {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 80px;
+    & .itemListForm {
+        width: 100%;
+    }
+    & .itemListTitle {
+        color: #777F98;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px; /* 177.778% */
+        letter-spacing: -0.375px;
+        margin-left: 15px;
+    }
+    & .inputsItemList {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        & .itemNameInListInput {
+            display: flex;
+            flex-direction: column;
+            width: 37%;
+        }
+        & .itemQuantityInput {
+            display: flex;
+            flex-direction: column;
+            width: 15%;
+        }
+        & .itemPriceInput {
+            display: flex;
+            flex-direction: column;
+            width: 25%;
+        }
+        & label {
+            color: #7E88C3;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 15px; /* 115.385% */
+            letter-spacing: -0.1px;
+            margin: 0 0 15px 15px;
+
+        }
+        & input {
+            border-radius: 4px;
+            border: 1px solid var(--05, #DFE3FA);
+            background: #FFF;
+            margin: 0 15px 0 15px;
+            display: flex;
+            flex-direction: column;
+            height: 48px;
+        }
+        & .total {
+            display: flex;
+            align-items: center;
+            & .totalPrice {
+                & h5 {
+                    color: #7E88C3;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 15px; /* 115.385% */
+                    letter-spacing: -0.1px;
+                    margin: 10px 0px 10px 0px;
+                }
+                & p {
+                    color: #888EB0;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 15px; /* 100% */
+                    letter-spacing: -0.25px;
+                    margin: 10px 0px 10px 0px;
+
+                }
+            }
+            & .trash {
+                margin-left: 25px;
+                width: 20px;
+                height: 24px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

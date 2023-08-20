@@ -1,0 +1,318 @@
+.scrollableContainer {
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+}
+.scrollableContainer .newInvoiceFormContainer {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white; /* Semi-transparent black background */
+}
+.scrollableContainer .newInvoiceFormQuit {
+  width: 50%;
+  height: 100vh;
+  background-color: transparent;
+}
+.scrollableContainer nav {
+  width: 12%;
+}
+.scrollableContainer form {
+  width: 86%;
+  max-height: 100vh; /* Adjust the desired maximum height */
+  overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+}
+
+.invoiceForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.invoiceForm input {
+  border-radius: 4px;
+  border: 1px solid var(--05, #DFE3FA);
+  background: #FFF;
+  padding-left: 15px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+.invoiceForm label {
+  margin-left: 10px;
+  margin-bottom: 7px;
+}
+.invoiceForm .formTitle {
+  color: #0C0E16;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 133.333% */
+  letter-spacing: -0.5px;
+}
+.invoiceForm .invoiceFormTop {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.invoiceForm .invoiceFormTop .billFromTitle {
+  color: #7C5DFA;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+}
+.invoiceForm .invoiceFormTop .billFromTop {
+  display: flex;
+  flex-direction: column;
+}
+.invoiceForm .invoiceFormTop .billFromTop input {
+  width: 95%;
+  height: 48px;
+}
+.invoiceForm .invoiceFormTop .billFromBottom {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin-top: 20px;
+}
+.invoiceForm .invoiceFormTop .billFromBottom input {
+  height: 48px;
+}
+.invoiceForm .invoiceFormTop .billFromBottom .city {
+  width: 27%;
+}
+.invoiceForm .invoiceFormTop .billFromBottom .city input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormTop .billFromBottom .postCode {
+  width: 27%;
+}
+.invoiceForm .invoiceFormTop .billFromBottom .postCode input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormTop .billFromBottom .country {
+  width: 27%;
+}
+.invoiceForm .invoiceFormTop .billFromBottom .country input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormCenter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  width: 95%;
+}
+.invoiceForm .invoiceFormCenter .billToTop {
+  display: flex;
+  flex-direction: column;
+}
+.invoiceForm .invoiceFormCenter .billToTop .billToTitle {
+  color: #7C5DFA;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+}
+.invoiceForm .invoiceFormCenter .billToTop input {
+  height: 48px;
+}
+.invoiceForm .invoiceFormCenter .billToTop .clientName {
+  width: 90%;
+  margin: 10px 0;
+}
+.invoiceForm .invoiceFormCenter .billToTop .clientName input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormCenter .billToTop .clientEmail {
+  width: 90%;
+  margin: 10px 0;
+}
+.invoiceForm .invoiceFormCenter .billToTop .clientEmail input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormCenter .billToTop .clientStreetAddress {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.invoiceForm .invoiceFormCenter .billToTop .clientStreetAddress input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormCenter .billToCenter {
+  display: flex;
+  justify-content: space-between;
+  width: 89%;
+}
+.invoiceForm .invoiceFormCenter .billToCenter input {
+  height: 48px;
+}
+.invoiceForm .invoiceFormCenter .billToCenter .clientCity {
+  width: 27%;
+}
+.invoiceForm .invoiceFormCenter .billToCenter .clientCity input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormCenter .billToCenter .clientPostCode {
+  width: 27%;
+}
+.invoiceForm .invoiceFormCenter .billToCenter .clientPostCode input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormCenter .billToCenter .clientCountry {
+  width: 27%;
+}
+.invoiceForm .invoiceFormCenter .billToCenter .clientCountry input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormBottom {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop {
+  display: flex;
+  flex-direction: column;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 95%;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop input {
+  height: 48px;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .invoiceDate {
+  width: 45%;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .invoiceDate input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms {
+  width: 45%;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms input {
+  width: 100%;
+  margin-top: 7px;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopBottom {
+  display: flex;
+  flex-direction: column;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopBottom input {
+  width: 95%;
+  height: 48px;
+}
+.invoiceForm .formButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.invoiceForm .formButtons .formButtonsRight {
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
+}
+
+/*AJOUT TEMPORAIRE*/
+.itemList {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-bottom: 80px;
+}
+.itemList .itemListForm {
+  width: 100%;
+}
+.itemList .itemListTitle {
+  color: #777F98;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 177.778% */
+  letter-spacing: -0.375px;
+  margin-left: 15px;
+}
+.itemList .inputsItemList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+.itemList .inputsItemList .itemNameInListInput {
+  display: flex;
+  flex-direction: column;
+  width: 37%;
+}
+.itemList .inputsItemList .itemQuantityInput {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+.itemList .inputsItemList .itemPriceInput {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+.itemList .inputsItemList label {
+  color: #7E88C3;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 115.385% */
+  letter-spacing: -0.1px;
+  margin: 0 0 15px 15px;
+}
+.itemList .inputsItemList input {
+  border-radius: 4px;
+  border: 1px solid var(--05, #DFE3FA);
+  background: #FFF;
+  margin: 0 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+  height: 48px;
+}
+.itemList .inputsItemList .total {
+  display: flex;
+  align-items: center;
+}
+.itemList .inputsItemList .total .totalPrice h5 {
+  color: #7E88C3;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 115.385% */
+  letter-spacing: -0.1px;
+  margin: 10px 0px 10px 0px;
+}
+.itemList .inputsItemList .total .totalPrice p {
+  color: #888EB0;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+  margin: 10px 0px 10px 0px;
+}
+.itemList .inputsItemList .total .trash {
+  margin-left: 25px;
+  width: 20px;
+  height: 24px;
+}
+.itemList .inputsItemList .total .trash:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=invoiceForm.module.css.map */

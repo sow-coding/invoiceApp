@@ -1,0 +1,19 @@
+@import "../variables";
+
+.saveAndSendButton {
+    width: 128px;
+    height: 48px;
+    border: none;
+    background-color: $purple;
+    border-radius: 24px;
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 100% */
+    letter-spacing: -0.25px;
+    &:hover {
+        background-color: $purpleHover;
+        cursor: pointer;
+    }
+}

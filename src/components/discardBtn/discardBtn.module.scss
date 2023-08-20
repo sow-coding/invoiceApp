@@ -1,0 +1,20 @@
+@import "../variables";
+
+.discardBtn {
+    border-radius: 24px;
+    background: #F9FAFE;
+    width: 96px;
+    height: 48px;
+    color: #7E88C3;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 100% */
+    letter-spacing: -0.25px;
+    border: none;
+    margin-bottom: 45px;
+    &:hover {
+        cursor: pointer;
+
+    }
+}
