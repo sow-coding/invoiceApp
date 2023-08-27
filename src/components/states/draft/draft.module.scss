@@ -1,19 +1,19 @@
 @import ".../../../../variables";
 
-.paid {
+.draft {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 6px;
-    background: #cefded;
+    background: #cec8c8;
     width: 104px;
     height: 40px;
     & svg {
         width: 12px;
         height: 12px;
     }
-    & .paidText {
-        color: #33D69F;
+    & .draftText {
+        color: $navyBlue;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;

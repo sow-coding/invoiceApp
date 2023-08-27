@@ -1,5 +1,25 @@
 @import "../variables";
 
+.deleteButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 89px;
+    height: 48px;
+    border-radius: 24px;
+    background-color: $red;
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 100% */
+    letter-spacing: -0.25px;
+    &:hover {
+        background-color: $redHover;
+        cursor: pointer;
+    }
+}
 
 .listOfInvoices {
     display: flex;
@@ -22,6 +42,7 @@
             align-items: center;
             &:hover {
                 cursor: pointer;
+                border: 1px solid $purple;
             }
             & .invoiceLeft {
                 display: flex;
@@ -102,7 +123,9 @@
                 font-weight: 700;
                 line-height: 15px; /* 100% */
                 letter-spacing: -0.25px;
-                
+                &:hover {
+                    color: $purpleDerived;
+                }
             }
         }
     }
@@ -153,10 +176,292 @@
         & .invoiceDetailsBottomTop {
             display: flex;
             justify-content: space-between;
+            margin: 30px 50px 0px 50px;
+            height: 15%;
+            & .invoiceDetailsBottomTopLeft {
+                display: flex;
+                flex-direction: column;
+                & h4 {
+                    color: $black;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px;
+                    letter-spacing: -0.25px;
+                }
+                & span {
+                    color: $lightGray;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px; /* 160% */
+                    letter-spacing: -0.25px;
+                }
+                & p {
+                    margin: 0 0;
+                    color: $purpleDerived;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 15px; /* 115.385% */
+                    letter-spacing: -0.1px;                    
+                }
+            }
+            .invoiceDetailsBottomTopRight {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin-right: 100px;
+                & p {
+                    color: $lightGray;
+                    text-align: right;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 18px; /* 138.462% */
+                    letter-spacing: -0.1px; 
+                    margin: 2.5px 0px;                  
+                }
+            }
         }
         & .invoiceDetailsBottomCenter {
             display: flex;
             justify-content: space-between;
+            margin: 0 50px 10px 50px;
+            height: 40%;
+            width: 70%;
+            & .invoiceDetailsBottomCenterLeft {
+                display: flex;
+                flex-direction: column;
+                & .invoiceDetailsBottomCenterLeftTop {
+                    display: flex;
+                    flex-direction: column;
+                    & p {
+                        color: $purpleDerived;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 15px; /* 115.385% */
+                        letter-spacing: -0.1px;                        
+                    }
+                    & h3 {
+                        margin: 0 0;
+                        color: $black;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 20px; /* 133.333% */
+                        letter-spacing: -0.25px;                        
+                    }
+                }
+                & .invoiceDetailsBottomCenterLeftBottom {
+                    display: flex;
+                    flex-direction: column;
+                    & p {
+                        color: $purpleDerived;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 15px; /* 115.385% */
+                        letter-spacing: -0.1px;                        
+                    }
+                    & h3 {
+                        margin: 0 0;
+                        color: $black;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 20px; /* 133.333% */
+                        letter-spacing: -0.25px;                        
+                    }
+                }
+            }
+            & .invoiceDetailsBottomCenterCenter {
+                & p {
+                    color: $purpleDerived;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 15px; /* 115.385% */
+                    letter-spacing: -0.1px; 
+                }
+                & h3 {
+                    margin: 0 0;
+                    color: $black;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 20px; /* 133.333% */
+                    letter-spacing: -0.25px;  
+                }
+            }
+            & .invoiceDetailsBottomCenterRight {
+                & p {
+                    color: $purpleDerived;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 15px; /* 115.385% */
+                    letter-spacing: -0.1px; 
+                }
+                & h2 {
+                    margin: 0 0;
+                    color: $black;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 20px; /* 133.333% */
+                    letter-spacing: -0.25px;  
+                }
+            }
+        }
+        & .invoiceDetailsBottomBottom {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: $navyBlue;
+            justify-content: center;
+            border-radius: 0 0 8px 8px;
+            height: 45%;
+            & .invoiceDetailsBottomBottomTop {
+                display: flex;
+                width: 100%;
+                height: 60%;
+                background-color: #e9edff;
+                justify-content: space-between;
+                & .invoiceDetailsBottomBottomTopLeft {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 50px;
+                    & p {
+                        color: $purpleDerived;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 18px; /* 138.462% */
+                        letter-spacing: -0.1px;                        
+                    }
+                    & h4 {
+                        color: $black;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 15px; /* 100% */
+                        letter-spacing: -0.25px;                        
+                    }
+                }
+                & .invoiceDetailsBottomBottomTopRight {
+                    display: flex;
+                    width: 50%;
+                    justify-content: space-between; 
+                    margin-right: 50px;        
+                    & p {
+                        color: $purpleDerived;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 18px; /* 138.462% */
+                        letter-spacing: -0.1px;                        
+                    }
+                    & h4 {
+                        color: $black;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 15px; /* 100% */
+                        letter-spacing: -0.25px;                        
+                    }                    
+                }
+            }
+            & .invoiceDetailsBottomBottomBottom {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 40%;
+                & p {
+                    color: #fff;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 15px; /* 115.385% */
+                    letter-spacing: -0.1px;
+                    margin-left: 30px;                        
+                }
+                & h1 {
+                    color: #FFF;
+                    text-align: right;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 32px; /* 133.333% */
+                    letter-spacing: -0.5px;
+                    margin-right: 30px;
+                }
+            }
+
         }
     }
+}
+
+.deleteConfirmationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color:  rgba(0, 0, 0, 0.8) ;
+    .deleteConfirmation {
+        width: 35%;
+        padding: 20px 20px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 8px;
+        background: #FFF;
+        box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+        & h1 {
+            color: $black;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 32px; /* 133.333% */
+            letter-spacing: -0.5px;        
+        }
+         & .deleteConfirmationText {
+            color: $lightGray;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 22px; /* 169.231% */
+            letter-spacing: -0.1px;
+            width: 90%;
+        }
+        & .deleteConfirmButton {
+            display: flex;
+            width: 95%;
+            justify-content: flex-end;
+            & .cancel {
+                width: 91px;
+                height: 48px;
+                flex-shrink: 0;
+                background-color: #f1efef;
+                margin-right: 15px;
+                color: $purpleDerived;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 15px; /* 100% */
+                letter-spacing: -0.25px;
+                border-radius: 28px;
+                border: none;
+                &:hover {
+                    background-color: #fcfcfc;
+                    cursor: pointer;
+                }
+            }
+        }
+    }  
 }

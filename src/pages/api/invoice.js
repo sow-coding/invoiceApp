@@ -22,7 +22,21 @@ export default function handler(req, res) {
       invoiceClientName,
       invoiceInvoiceDate,
       invoicePrice,
-      invoiceStatut } = req.body;
+      invoiceStatut,
+      invoiceAdress,
+      invoiceCity,
+      invoiceClientCity,
+      invoiceClientCountry,
+      invoiceClientEmail,
+      invoiceClientPostCode,
+      invoiceClientStreetAddress,
+      invoiceCountry,
+      invoiceItemNameInList,
+      invoiceItemQuantity,
+      invoicePostCode,
+      invoiceProjectDescription,
+      invoicePaymentTerms
+    } = req.body;
     const newInvoice = { 
       id
       //generateCustomId()
@@ -30,7 +44,20 @@ export default function handler(req, res) {
       invoiceClientName,
       invoiceInvoiceDate,
       invoicePrice,
-      invoiceStatut
+      invoiceStatut,
+      invoiceAdress,
+      invoiceCity,
+      invoiceClientCity,
+      invoiceClientCountry,
+      invoiceClientEmail,
+      invoiceClientPostCode,
+      invoiceClientStreetAddress,
+      invoiceCountry,
+      invoiceItemNameInList,
+      invoiceItemQuantity,
+      invoicePostCode,
+      invoiceProjectDescription,
+      invoicePaymentTerms
      };
     invoices.push(newInvoice);
     res.status(201).json(newInvoice);

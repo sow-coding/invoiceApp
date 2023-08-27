@@ -3,7 +3,7 @@ import styles from "./homeContent.module.css"
 import MainMenu from '../mainMenu/mainMenu'
 import Nothing from '../nothing/nothing'
 import ListOfInvoices from '../listOfInvoces/listOfInvoices'
-import { useRecoilValue } from 'recoil';
+import { RecoilRoot, useRecoilValue } from 'recoil';
 import { invoiceListState } from "../../app/invoiceListState"
 
 
@@ -13,7 +13,9 @@ function HomeContent() {
     <div className={`${styles.homeContentContainer}`}>
         <MainMenu />
         <div className={`${styles.homeContent}`}>
-        {listOfInvoices.length === 0 ? <Nothing />:<ListOfInvoices />}
+        {listOfInvoices.length === 0 ? <Nothing />:
+        <ListOfInvoices />
+        }
         </div>
   </div>
   )

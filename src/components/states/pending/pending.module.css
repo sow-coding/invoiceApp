@@ -1,22 +1,22 @@
-.paid {
+.pending {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
-  background: #cefded;
+  background: #f8e1c2;
   width: 104px;
   height: 40px;
 }
-.paid svg {
+.pending svg {
   width: 12px;
   height: 12px;
 }
-.paid .paidText {
-  color: #33D69F;
+.pending .draftPending {
+  color: #FF8F00;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 15px; /* 100% */
   letter-spacing: -0.25px;
   margin-left: 15px;
-}/*# sourceMappingURL=paid.module.css.map */
+}/*# sourceMappingURL=pending.module.css.map */

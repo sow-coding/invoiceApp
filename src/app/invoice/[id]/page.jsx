@@ -1,10 +1,16 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "../../../components/listOfInvoces/listOfInvoices.module.css"
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import Paid from '@/components/states/paid/paid'
 import ItemList from '@/components/itemList/itemList'
+import EditBtn from '@/components/editBtn/editBtn'
+import DeleteButton from '@/components/deleteBtn/deleteButton'
+import MarkAsPaidButton from '@/components/markAsPaidBtn/markAsPaidButton'
+import Draft from '@/components/states/draft/draft'
+import Pending from '@/components/states/pending/pending'
+
 
 function InvoiceDetails() {
   /* UTILISER LES ROUTES POUR POUVOIR PASSER EN PROPS */
@@ -16,12 +22,41 @@ function InvoiceDetails() {
   function changeURLWithoutReloading() {
     const newURL = `/invoice/${invoiceData.id}`; // The URL you want to change to
     window.history.pushState({}, '', newURL);
-    console.log("appelle")
   }
   useEffect(() => {
     changeURLWithoutReloading()
   })
-  return (
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+
+    function DeleteButton () {
+      const router = useRouter()
+      return (
+        <div onClick={() => {
+          router.push("/")
+        }} className={`${styles.deleteButton}`}>
+          <p>Delete</p>
+        </div>
+      )
+    }
+    
+    function DeleteConfirmation() {
+      return (
+        <div className={`${styles.deleteConfirmationContainer}`}>
+          <div className={`${styles.deleteConfirmation}`}>
+          <h1>Confirm Deletion</h1>
+            <p className={`${styles.deleteConfirmationText}`}>Are you sure you want to delete invoice #{invoiceData.id}? This action cannot be undone.</p>
+            <div className={`${styles.deleteConfirmButton}`}>
+                <button onClick={() => {
+                  setShowDeleteConfirmation(false)
+                }} className={`${styles.cancel}`}>Cancel</button>
+                <DeleteButton />
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return (
     <div className={`${styles.invoiceDetails}`}>
       <div className={`${styles.invoiceDetailsTop}`}>
         <div onClick={() => {
@@ -36,12 +71,18 @@ function InvoiceDetails() {
       <div className={`${styles.invoiceDetailsCenter}`}>
         <div className={`${styles.invoiceDetailsCenterLeft}`}>
           <p>Status</p>
-          <Paid />
+          <Paid/>
         </div>
         <div className={`${styles.invoiceDetailsCenterRight}`}>
-          <button>Edit</button>
-          <button>Delete</button>
-          <button>Mark as paid</button>
+          <EditBtn />
+
+          <div onClick={() => {
+            setShowDeleteConfirmation(true)
+          }} className={`${styles.deleteButton}`}>
+              <p>Delete</p>
+          </div>
+          
+          <MarkAsPaidButton />
         </div>
       </div>
       <div className={`${styles.invoiceDetailsBottom}`}>
@@ -49,13 +90,13 @@ function InvoiceDetails() {
         <div className={`${styles.invoiceDetailsBottomTop}`}>
           <div className={`${styles.invoiceDetailsBottomTopLeft}`}>
             <h4><span>#</span>{invoiceData.id}</h4>
-            <p>Graphic Design</p>
+            <p>{invoiceData.projectDescription}</p>
           </div>
           <div className={`${styles.invoiceDetailsBottomTopRight}`}>
-          <p>19 Union Terrace</p>
-          <p>London</p>
-          <p>E1 3EZ</p>
-          <p>United Kingdom</p>
+          <p>{invoiceData.address}</p>
+          <p>{invoiceData.city}</p>
+          <p>{invoiceData.postCode}</p>
+          <p>{invoiceData.country}</p>
         </div>
         </div>
 
@@ -64,35 +105,52 @@ function InvoiceDetails() {
           <div className={`${styles.invoiceDetailsBottomCenterLeft}`}>
             <div className={`${styles.invoiceDetailsBottomCenterLeftTop}`}>
               <p>Invoice Date</p>
-              <h3>21 august 2022</h3>
+              <h3>{invoiceData.invoiceDate}</h3>
             </div>
             <div className={`${styles.invoiceDetailsBottomCenterLeftBottom}`}>
               <p>Payment Due</p>
-              <h3>20 sep 2023</h3>
+              <h3>{invoiceData.paymentTerms}</h3>
             </div>
           </div>
 
           <div className={`${styles.invoiceDetailsBottomCenterCenter}`}>
             <p>Bill to</p>
             <div className="clientInfos">
-              <p>Alex Grim</p>
-              <p>84 Church Way</p>
-              <p>Bradford</p>
-              <p>BD1 9PB</p>
-              <p>United Kingdom</p>
+              <h3>{invoiceData.clientName}</h3>
+              <p>{invoiceData.clientStreetAddress}</p>
+              <p>{invoiceData.clientCity}</p>
+              <p>{invoiceData.clientPostCode}</p>
+              <p>{invoiceData.clientCountry}</p>
             </div>
           </div>
 
           <div className={`${styles.invoiceDetailsBottomCenterRight}`}>
             <p>Sent to</p>
-            <h2>alexgrim@gmail.com</h2>
+            <h2>{invoiceData.clientEmail}</h2>
           </div>
         
         </div>
 
         <div className={`${styles.invoiceDetailsBottomBottom}`}>
           <div className={`${styles.invoiceDetailsBottomBottomTop}`}>
-
+            <div className={`${styles.invoiceDetailsBottomBottomTopLeft}`}>
+              <p>Item Name</p>
+              <h4>{invoiceData.itemNameInList}</h4>
+            </div>
+            <div className={`${styles.invoiceDetailsBottomBottomTopRight}`}>
+              <div className={`${styles.quantity}`}>
+                <p>QTY.</p>
+                <h4>{invoiceData.itemQuantity}</h4>
+              </div>
+              <div className={`${styles.price}`}>
+                <p>Price</p>
+                <h4>{invoiceData.price}</h4>
+              </div>
+              <div className={`${styles.total}`}>
+              <p>Total</p>
+              <h4>{invoiceData.itemQuantity * invoiceData.price}</h4>
+              </div>
+            </div>
           </div>
           <div className={`${styles.invoiceDetailsBottomBottomBottom}`}>
             <p>Amont Due</p>
@@ -101,7 +159,9 @@ function InvoiceDetails() {
         </div>
 
       </div>
+      {showDeleteConfirmation && <DeleteConfirmation />}
     </div>
+    
   )
 }
 

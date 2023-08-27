@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./invoiceForm.module.css"
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -29,7 +29,7 @@ const InvoiceForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: yupResolver(formSchema),
     });
-
+    const [paymentTermsUnRoll, setPaymentTermsUnRoll] = useState("none")
     const [invoiceList, setInvoiceList] = useRecoilState(invoiceListState);
     //const [reFetchState, setReFetchState] = useRecoilState(reFetch)
     function generateCustomId() {
@@ -55,9 +55,22 @@ const InvoiceForm = () => {
             },
             body: JSON.stringify({
               id: invoiceId,
+              invoiceAdress: data.address,
+              invoiceCity: data.city,
+              invoiceClientCity: data.clientCity,
+              invoiceClientCountry: data.clientCountry,
+              invoiceClientEmail: data.clientEmail,
+              invoiceClientPostCode: data.clientPostCode,
+              invoiceClientStreetAddress: data.clientStreetAddress,
+              invoiceCountry: data.country,
+              invoiceItemNameInList: data.itemNameInList,
+              invoiceItemQuantity: data.itemQuatity,
+              invoicePostCode: data.postCode,
+              invoiceProjectDescription: data.projectDescription,
               invoiceClientName: data.clientName,
               invoiceInvoiceDate: data.invoiceDate,
-              invoicePrice: data.itemPrice + "€",
+              invoicePrice: data.itemPrice,
+              invoicePaymentTerms: data.paymentTerms,
               invoiceStatut: "Paid",
             }),
           });
@@ -73,6 +86,19 @@ const InvoiceForm = () => {
           clientName: data.clientName,
           invoiceDate: data.invoiceDate,
           price: data.itemPrice,
+          adress: data.address,
+          city: data.city,
+          clientCity: data.clientCity,
+          clientCountry: data.clientCountry,
+          clientEmail: data.clientEmail,
+          clientPostCode: data.clientPostCode,
+          clientStreetAddress: data.clientStreetAddress,
+          country: data.country,
+          itemNameInList: data.itemNameInList,
+          itemQuantity: data.itemQuantity,
+          postCode: data.postCode,
+          projectDescription: data.projectDescription,
+          paymentTerms: data.paymentTerms,
           statut: "Paid"
         }
         setInvoiceList([...invoiceList, newInvoiceList])
@@ -149,7 +175,7 @@ const InvoiceForm = () => {
               </div>
               <div className={`${styles.clientEmail}`}>
                 <label htmlFor="clientEmail">Client´s Email</label>
-                <input type="text" name='clientEmail' {...register("clientEmail")} />
+                <input type="text" placeholder='e.g. email@example.com' name='clientEmail' {...register("clientEmail")} />
               </div>
               <div className={`${styles.clientStreetAddress}`}>
                 <label htmlFor="clientStreetAddress">Street Address</label>
@@ -179,14 +205,32 @@ const InvoiceForm = () => {
                   <label htmlFor="invoiceDate">Invoice Date</label>
                   <input type="date" name="invoiceDate" {...register("invoiceDate")} />
                 </div>
+
                 <div className={`${styles.paymentTerms}`}>
                   <label htmlFor="paymentTerms">Payment Terms</label>
-                  <input type="number" name='paymentTerms' {...register("paymentTerms")}/>
+                  <input onClick={() => {
+                    setPaymentTermsUnRoll('flex')
+                  }} className={`${styles.paymentTermsInput}`} type="text" placeholder='Net 1 day' readOnly name='paymentTerms' {...register("paymentTerms")}/>
+                  <div class={`${styles.options} ${paymentTermsUnRoll}`}>
+                    <div onClick={() => {
+                      setPaymentTermsUnRoll('none')
+                    }} class={`${styles.option}`} >Net 1 day</div>
+                    <div onClick={() => {
+                      setPaymentTermsUnRoll('none')
+                    }} class={`${styles.option}`} >Net 7 day</div>
+                    <div onClick={() => {
+                      setPaymentTermsUnRoll('none')
+                    }} class={`${styles.option}`} >Net 14 day</div>
+                    <div onClick={() => {
+                      setPaymentTermsUnRoll('none')
+                    }} class={`${styles.option}`} >Net 30 day</div>
+                  </div>
                 </div>
+
               </div>
               <div className={`${styles.invoiceFormBottomTopBottom}`}>
                 <label htmlFor="projectDescription">Project Description</label>
-                <input type="text" name='projectDescription' {...register("projectDescription")}/>
+                <input type="text" placeholder='e.g. Graphic Design Service' name='projectDescription' {...register("projectDescription")}/>
               </div> 
             </div>
           </div>

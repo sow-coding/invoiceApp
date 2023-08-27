@@ -10,6 +10,15 @@
   justify-content: space-between;
   background-color: white; /* Semi-transparent black background */
 }
+.scrollableContainer .newInvoiceFormContainer ::-webkit-scrollbar {
+  background: white;
+  width: 8px;
+}
+.scrollableContainer .newInvoiceFormContainer ::-webkit-scrollbar-thumb {
+  background: #DFE3FA;
+  height: 112px;
+  border-radius: 4px;
+}
 .scrollableContainer .newInvoiceFormQuit {
   width: 50%;
   height: 100vh;
@@ -205,9 +214,32 @@
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms {
   width: 45%;
 }
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms:hover {
+  cursor: pointer;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .paymentTermsInput:hover {
+  cursor: pointer;
+}
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms input {
   width: 100%;
   margin-top: 7px;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .options {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .options .option {
+  padding: 15px 15px;
+  transition: background-color 0.2s;
+  border-top: 1px solid #ccc;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .options .option:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopBottom {
   display: flex;
@@ -218,14 +250,24 @@
   height: 48px;
 }
 .invoiceForm .formButtons {
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
+  z-index: 1;
+  border-radius: 0px 20px 20px 0px;
+  background: #FFF;
+  padding-top: 20px;
+}
+.invoiceForm .formButtons .formButtonsLeft {
+  margin-left: 15px;
 }
 .invoiceForm .formButtons .formButtonsRight {
   display: flex;
   justify-content: space-between;
-  width: 43%;
+  width: 40%;
+  margin-right: 15px;
 }
 
 /*AJOUT TEMPORAIRE*/

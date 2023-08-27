@@ -1,22 +1,22 @@
-.paid {
+.draft {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
-  background: #cefded;
+  background: #cec8c8;
   width: 104px;
   height: 40px;
 }
-.paid svg {
+.draft svg {
   width: 12px;
   height: 12px;
 }
-.paid .paidText {
-  color: #33D69F;
+.draft .draftText {
+  color: #141625;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 15px; /* 100% */
   letter-spacing: -0.25px;
   margin-left: 15px;
-}/*# sourceMappingURL=paid.module.css.map */
+}/*# sourceMappingURL=draft.module.css.map */
