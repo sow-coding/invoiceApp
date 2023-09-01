@@ -1,27 +1,15 @@
 let invoices = [];
 
-/*function generateCustomId() {
-  const randomLetters = Array.from({ length: 2 }, () => {
-    const randomCharCode = Math.floor(Math.random() * 26) + 65; // A-Z ASCII range
-    return String.fromCharCode(randomCharCode);
-  }).join('');
-
-  const randomNum = Math.floor(Math.random() * 9000) + 1000;
-
-  return `#${randomLetters}${randomNum}`;
-}*/
-
 export default function handler(req, res) {
   if (req.method === 'GET') {
     // Handle GET request
     res.status(200).json(invoices);
   } else if (req.method === 'POST') {
     // Handle POST request
-    const { 
+    const {
       id,
       invoiceClientName,
       invoiceInvoiceDate,
-      invoicePrice,
       invoiceStatut,
       invoiceAdress,
       invoiceCity,
@@ -31,19 +19,17 @@ export default function handler(req, res) {
       invoiceClientPostCode,
       invoiceClientStreetAddress,
       invoiceCountry,
-      invoiceItemNameInList,
-      invoiceItemQuantity,
       invoicePostCode,
       invoiceProjectDescription,
-      invoicePaymentTerms
+      invoicePaymentTerms,
+      ...dynamicKeys
     } = req.body;
-    const newInvoice = { 
-      id
-      //generateCustomId()
-      ,
+
+    // Create a new invoice object
+    const newInvoice = {
+      id,
       invoiceClientName,
       invoiceInvoiceDate,
-      invoicePrice,
       invoiceStatut,
       invoiceAdress,
       invoiceCity,
@@ -53,12 +39,16 @@ export default function handler(req, res) {
       invoiceClientPostCode,
       invoiceClientStreetAddress,
       invoiceCountry,
-      invoiceItemNameInList,
-      invoiceItemQuantity,
       invoicePostCode,
       invoiceProjectDescription,
-      invoicePaymentTerms
-     };
+      invoicePaymentTerms,
+    };
+
+    // Add dynamic keys and values to the new invoice object
+    for (const key in dynamicKeys) {
+      newInvoice[key] = dynamicKeys[key];
+    }
+
     invoices.push(newInvoice);
     res.status(201).json(newInvoice);
   } else {

@@ -8,11 +8,13 @@ import SaveAsDraftButton from '../saveAsDraftBtn/saveAsDraftButton';
 import SaveAndSendButton from '../saveAndSendBtn/saveAndSendButton';
 import DiscardBtn from '../discardBtn/discardBtn';
 import SideBar from '../sideBar/sideBar';
-import AddNewItemButton from '../addNewItemBtn/addNewItemButton';
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { showInvoiceFormState } from '@/app/showInvoiceFormState'
 import { invoiceListState } from '@/app/invoiceListState';
 import { invoiceState } from '@/app/invoiceState';
+import DatePicker, {CalendarContainer} from "react-datepicker";
+import { invoiceStatut } from '@/app/invoiceStatut';
+import { itemListInDetailsPage } from '@/app/itemListInDetailsPage';
 
 
 //FAIRE SYSTEME DE VALIDATION FORM !
@@ -29,9 +31,25 @@ const InvoiceForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: yupResolver(formSchema),
     });
-    const [paymentTermsUnRoll, setPaymentTermsUnRoll] = useState("none")
+    //const [paymentTermsUnRoll, setPaymentTermsUnRoll] = useState("none")
+    const [startDate, setStartDate] = useState(new Date())
     const [invoiceList, setInvoiceList] = useRecoilState(invoiceListState);
-    //const [reFetchState, setReFetchState] = useRecoilState(reFetch)
+    const [statut, setStatut] = useRecoilState(invoiceStatut)
+    const [items, setItems] = useState([])
+    //const [itemListArray, setItemListArray] = useRecoilState(itemListInDetailsPage)
+    //Invoice date input params and stuff
+
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const [selectedValue, setSelectedValue] = useState(null);
+  
+    const choices = ["Net 1 day", "Net 7 day", "Net 14 day", "Net 30 day"];
+  
+    const handleChoiceClick = (choice) => {
+      setSelectedValue(choice);
+      setDropdownOpen(false); 
+    };
+
     function generateCustomId() {
       const randomLetters = Array.from({ length: 2 }, () => {
         const randomCharCode = Math.floor(Math.random() * 26) + 65; // A-Z ASCII range
@@ -42,10 +60,44 @@ const InvoiceForm = () => {
     
       return `${randomLetters}${randomNum}`;
     }
-    
+
     const invoiceId = generateCustomId()
 
+    function getCurrentDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+  }
+
     const handlePost = async (data) => {
+      const dynamicKeys = items.map((item, index) => ({
+      [`invoiceItemNameInList${index}`]: data['itemNameInList' + index],
+      [`invoiceItemQuantity${index}`]: data['itemQuantity' + index],
+      [`invoiceItemPrice${index}`]: data['itemPrice' + index],
+    }));
+
+    const requestBody = Object.assign(
+      {
+        id: invoiceId,
+        invoiceAdress: data.address,
+        invoiceCity: data.city,
+        invoiceClientCity: data.clientCity,
+        invoiceClientCountry: data.clientCountry,
+        invoiceClientEmail: data.clientEmail,
+        invoiceClientPostCode: data.clientPostCode,
+        invoiceClientStreetAddress: data.clientStreetAddress,
+        invoiceCountry: data.country,
+        invoicePostCode: data.postCode,
+        invoiceProjectDescription: data.projectDescription,
+        invoiceClientName: data.clientName,
+        invoiceInvoiceDate: data.invoiceDate,
+        invoicePaymentTerms: selectedValue,
+        invoiceStatut: `Pending`,
+      },
+      ...dynamicKeys 
+    );
         try {
           
           const response = await fetch('http://localhost:3000/api/invoice', {
@@ -53,26 +105,7 @@ const InvoiceForm = () => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-              id: invoiceId,
-              invoiceAdress: data.address,
-              invoiceCity: data.city,
-              invoiceClientCity: data.clientCity,
-              invoiceClientCountry: data.clientCountry,
-              invoiceClientEmail: data.clientEmail,
-              invoiceClientPostCode: data.clientPostCode,
-              invoiceClientStreetAddress: data.clientStreetAddress,
-              invoiceCountry: data.country,
-              invoiceItemNameInList: data.itemNameInList,
-              invoiceItemQuantity: data.itemQuatity,
-              invoicePostCode: data.postCode,
-              invoiceProjectDescription: data.projectDescription,
-              invoiceClientName: data.clientName,
-              invoiceInvoiceDate: data.invoiceDate,
-              invoicePrice: data.itemPrice,
-              invoicePaymentTerms: data.paymentTerms,
-              invoiceStatut: "Paid",
-            }),
+            body: JSON.stringify(requestBody),
           });
         } catch (error) {
           console.error('Error posting:', error);
@@ -80,36 +113,99 @@ const InvoiceForm = () => {
       }; 
       
       function onSubmit (data) {
+        console.log(data)
         handlePost(data)
-        const newInvoiceList = {
-          id: invoiceId,
-          clientName: data.clientName,
-          invoiceDate: data.invoiceDate,
-          price: data.itemPrice,
-          adress: data.address,
-          city: data.city,
-          clientCity: data.clientCity,
-          clientCountry: data.clientCountry,
-          clientEmail: data.clientEmail,
-          clientPostCode: data.clientPostCode,
-          clientStreetAddress: data.clientStreetAddress,
-          country: data.country,
-          itemNameInList: data.itemNameInList,
-          itemQuantity: data.itemQuantity,
-          postCode: data.postCode,
-          projectDescription: data.projectDescription,
-          paymentTerms: data.paymentTerms,
-          statut: "Paid"
-        }
+        const dynamicKeys = items.map((item, index) => ({
+          [`itemNameInList${index}`]: data['itemNameInList' + index],
+          [`itemQuantity${index}`]: data['itemQuantity' + index],
+          [`price${index}`]: data['itemPrice' + index],
+        }));
+        {/* STOCKER DYNAMICKEYS DANS UN ARRAY POUR LE MAP PAR INVOICEDATA DANS PAGE POUR AVOIR LE BON
+        NOMBRE DE MAPPING POUR CHAQUE !
+      */}
+        const newInvoiceList = Object.assign(
+          {
+            id: invoiceId,
+            clientName: data.clientName,
+            invoiceDate: data.invoiceDate,
+            address: data.address,
+            city: data.city,
+            clientCity: data.clientCity,
+            clientCountry: data.clientCountry,
+            clientEmail: data.clientEmail,
+            clientPostCode: data.clientPostCode,
+            clientStreetAddress: data.clientStreetAddress,
+            country: data.country,
+            postCode: data.postCode,
+            projectDescription: data.projectDescription,
+            paymentTerms: selectedValue,
+            statut: `${statut}`,
+            itemListArray: dynamicKeys
+          },     
+        ) 
+          
+        
         setInvoiceList([...invoiceList, newInvoiceList])
         setNewInvoiceFormDisplay(false)
+        setStatut("Pending")
+      }
+
+      function AddNewItemButton() {
+        return (
+          <div onClick={() => {
+            const newItem = {
+              itemName: '',
+              itemQuantity: 0,
+              itemPrice: 0,
+            };
+            setItems([...items, items + 1])
+            //setItemListArray([...itemListArray, newItem])
+          }} className={`${styles.addNewItemButton}`}>
+              <p>+ Add new item</p>
+          </div>
+        )
       }
 
       function ItemList () {
         return (
         <div className={`${styles.itemList}`} >
                 <h1 className={`${styles.itemListTitle}`}>Item List</h1>
+                {items.map((i, index) => (
+              <div key={i} className={`${styles.item}`}>
+
                 <div className={`${styles.inputsItemList}`}>
+                  <div className={`${styles.itemNameInListInput}`}>
+                    <label htmlFor="itemNameInList">Item Name</label>
+                    {/* METTRE TOUS LES REGISTER ET NOM ETC AVEC LE I POUR CHOPPER TOUTES DATAS DYNAMIQUE */}
+                    {/* FAIRE LE SYSTEME DE SUPP EN METTANT CONDIANT I + INDEX OU INDEX - 1 POUR SUPP CELUI CLIQUER */}
+                    <input type="text" name='itemNameInList' {...register(`itemNameInList${index}`)}/>
+                  </div>
+                <div className={`${styles.itemQuantityInput}`}>
+                    <label htmlFor="itemQuantity">Qty.</label>
+                    <input type="number" name='itemQuantity' {...register(`itemQuantity${index}`)}/>
+                </div>      
+                  <div className={`${styles.itemPriceInput}`}>
+                    <label htmlFor="itemPrice">Price</label>
+                    <input type="text" name='itemPrice' {...register(`itemPrice${index}`)}/>
+                  </div>    
+      
+                  <div className={`${styles.total}`}>
+                    <div className={`${styles.totalPrice}`}>
+                      <h5>Total</h5>
+                      {/* METTRE UN STATE POUR RETENIR CE QUI EST ECRIT DANS ITEM QTY ET ITEM PRICE */}
+                      <p>??</p>
+                    </div>
+                    <svg className={`${styles.trash}`} xmlns="http://www.w3.org/2000/svg" width="13" height="16" viewBox="0 0 13 16" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.47225 0L9.36117 0.888875H12.4722V2.66667H0.027832V0.888875H3.13892L4.02783 0H8.47225ZM2.6945 16C1.71225 16 0.916707 15.2045 0.916707 14.2222V3.55554H11.5834V14.2222C11.5834 15.2045 10.7878 16 9.80562 16H2.6945Z" fill="#888EB0"/>
+                    </svg>
+                    
+
+                  </div>
+                </div>
+              
+              </div>
+                ))}
+                {/*<div className={`${styles.inputsItemList}`}>
                   <div className={`${styles.itemNameInListInput}`}>
                     <label htmlFor="itemNameInList">Item Name</label>
                     <input type="text" name='itemNameInList' {...register("itemNameInList")}/>
@@ -132,17 +228,33 @@ const InvoiceForm = () => {
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M8.47225 0L9.36117 0.888875H12.4722V2.66667H0.027832V0.888875H3.13892L4.02783 0H8.47225ZM2.6945 16C1.71225 16 0.916707 15.2045 0.916707 14.2222V3.55554H11.5834V14.2222C11.5834 15.2045 10.7878 16 9.80562 16H2.6945Z" fill="#888EB0"/>
                     </svg>
                   </div>
-                </div>
+                </div>*/}
                 <AddNewItemButton />
           </div>
         )
       }
+      const MyContainer = ({ className, children }) => {
+        return (
+          <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
+            <CalendarContainer className={className}>
+              <div style={{ background: "#f0f0f0" }}>
+                Pick a date:
+              </div>
+              <div style={{ position: "relative" }}>{children}</div>
+            </CalendarContainer>
+          </div>
+        );
+      };
+
     return (
 
     <div className={`${styles.scrollableContainer}`}>
       <div className={`${styles.newInvoiceFormContainer}`}>
         <SideBar position="relative"/>
-        <form onSubmit={handleSubmit(onSubmit)} className={`${styles.invoiceForm}`}>
+        <form onClick={() => {
+          //paymentTermsUnRoll === "flex" && setPaymentTermsUnRoll("none")
+          isDropdownOpen && setDropdownOpen(false)
+          }} onSubmit={handleSubmit(onSubmit)} className={`${styles.invoiceForm}`}>
           <h1 className={`${styles.formTitle}`}>New Invoice</h1>
           <div className={`${styles.invoiceFormTop}`}>
           <h5 className={`${styles.billFromTitle}`}>Bill from</h5>
@@ -203,28 +315,54 @@ const InvoiceForm = () => {
               <div className={`${styles.invoiceFormBottomTopTop}`}>
                 <div className={`${styles.invoiceDate}`}>
                   <label htmlFor="invoiceDate">Invoice Date</label>
-                  <input type="date" name="invoiceDate" {...register("invoiceDate")} />
+                  {/* TROUVER LIBRAIRIE POUR LA CALENDAR PICKER */}
+                  <input type="date" defaultValue={getCurrentDate()} name="invoiceDate" {...register("invoiceDate")} />
                 </div>
 
                 <div className={`${styles.paymentTerms}`}>
                   <label htmlFor="paymentTerms">Payment Terms</label>
-                  <input onClick={() => {
-                    setPaymentTermsUnRoll('flex')
-                  }} className={`${styles.paymentTermsInput}`} type="text" placeholder='Net 1 day' readOnly name='paymentTerms' {...register("paymentTerms")}/>
-                  <div class={`${styles.options} ${paymentTermsUnRoll}`}>
+                  <div className={`${styles.paymentTermsInputContainer}`}>
+                    <input onClick={() => {
+                      //setPaymentTermsUnRoll('flex')
+                      setDropdownOpen(!isDropdownOpen)
+                    }} value={selectedValue} placeholder='Net 30 days' readOnly className={`${styles.paymentTermsInput}`} type="text" name='paymentTerms' {...register("paymentTerms")}                  
+                    />
+
+                    {isDropdownOpen === false ? <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7" fill="none">
+                      <path d="M1 1L5.2279 5.2279L9.4558 1" stroke="#7C5DFA" stroke-width="2"/>
+                    </svg>: <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7" fill="none">
+                      <path d="M1 6.22803L5.2279 2.00013L9.4558 6.22803" stroke="#7C5DFA" stroke-width="2"/>
+                    </svg>}                          
+                  </div>
+                  
+                  {isDropdownOpen && (
+                  <div className={`${styles.options}`}>
+                      {choices.map((choice, index) => (
+                        <div className={`${styles.option}`} key={index} onClick={() => {
+                          handleChoiceClick(choice)
+                        }}>{choice}</div>
+                      ))}
+                    </div>
+                    )}
+                    
+                  {/*<div class={`${styles.options} ${paymentTermsUnRoll}`}>
                     <div onClick={() => {
                       setPaymentTermsUnRoll('none')
+                      setPlaceHolder("Net 1 day")
                     }} class={`${styles.option}`} >Net 1 day</div>
                     <div onClick={() => {
+                      setPlaceHolder("Net 7 day")
                       setPaymentTermsUnRoll('none')
                     }} class={`${styles.option}`} >Net 7 day</div>
                     <div onClick={() => {
                       setPaymentTermsUnRoll('none')
+                      setPlaceHolder("Net 14 day")
                     }} class={`${styles.option}`} >Net 14 day</div>
                     <div onClick={() => {
                       setPaymentTermsUnRoll('none')
+                      setPlaceHolder("Net 30 day")
                     }} class={`${styles.option}`} >Net 30 day</div>
-                  </div>
+                  </div>*/}
                 </div>
 
               </div>

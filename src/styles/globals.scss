@@ -11,6 +11,18 @@ body {
     height: 90vh;
     overflow-x: hidden;
     background-color: #f8f8fb;
+    & ul, ol {
+        list-style-type: none;
+      }
+      
+    & input {
+        font-family: $font;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 15px; /* 100% */
+        letter-spacing: -0.25px;
+    }
     & .homePage {
         display: flex;
         width: 100%;

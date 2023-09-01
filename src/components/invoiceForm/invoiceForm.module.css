@@ -47,9 +47,18 @@
   display: flex;
   flex-direction: column;
 }
+.invoiceForm input:focus {
+  border: 1px solid #7C5DFA;
+}
 .invoiceForm label {
   margin-left: 10px;
   margin-bottom: 7px;
+  color: #7E88C3;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 115.385% */
+  letter-spacing: -0.1px;
 }
 .invoiceForm .formTitle {
   color: #0C0E16;
@@ -210,15 +219,26 @@
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .invoiceDate input {
   width: 100%;
   margin-top: 7px;
+  outline: none;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms {
   width: 45%;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .paymentTermsInputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .paymentTermsInputContainer svg {
+  position: relative;
+  right: 40px;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms:hover {
   cursor: pointer;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .paymentTermsInput:hover {
   cursor: pointer;
+  border: 1px solid #7C5DFA;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms input {
   width: 100%;
@@ -236,10 +256,12 @@
   padding: 15px 15px;
   transition: background-color 0.2s;
   border-top: 1px solid #ccc;
+  text-decoration: none;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopTop .paymentTerms .options .option:hover {
   background-color: #f0f0f0;
   cursor: pointer;
+  color: #7C5DFA;
 }
 .invoiceForm .invoiceFormBottom .invoiceFormBottomTop .invoiceFormBottomTopBottom {
   display: flex;
@@ -288,6 +310,7 @@
   line-height: 32px; /* 177.778% */
   letter-spacing: -0.375px;
   margin-left: 15px;
+  margin-top: 20px;
 }
 .itemList .inputsItemList {
   display: flex;
@@ -356,5 +379,38 @@
   height: 24px;
 }
 .itemList .inputsItemList .total .trash:hover {
+  cursor: pointer;
+  fill: red;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+.addNewItemButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  width: 100%;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #F9FAFE;
+  color: #7E88C3;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+}
+.addNewItemButton:hover {
+  background-color: #DFE3FA;
   cursor: pointer;
 }/*# sourceMappingURL=invoiceForm.module.css.map */

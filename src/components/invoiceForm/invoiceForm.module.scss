@@ -55,10 +55,19 @@
         outline: none;
         display: flex;
         flex-direction: column;
+        &:focus {
+            border: 1px solid $purple;
+        }
     }
     & label {
         margin-left: 10px;
         margin-bottom: 7px;
+        color: $purpleDerived;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 15px; /* 115.385% */
+        letter-spacing: -0.1px;
     }
     & .formTitle {
         color: $black;
@@ -225,16 +234,28 @@
                     & input {
                         width: 100%;
                         margin-top: 7px;
+                        outline: none;
                     }
+                    
                 }
                 & .paymentTerms {
                     width: 45%;
+                    & .paymentTermsInputContainer {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        & svg {
+                            position: relative;
+                            right: 40px;
+                        }
+                    }
                     &:hover {
                         cursor: pointer;
                     }
                     & .paymentTermsInput {
                         &:hover {
                             cursor: pointer;
+                            border: 1px solid $purple;
                         }
                     }
                     & input {
@@ -254,9 +275,11 @@
                             padding: 15px 15px;
                             transition: background-color 0.2s;
                             border-top: 1px solid #ccc;
+                            text-decoration: none;
                             &:hover {
                                 background-color: #f0f0f0;
                                 cursor: pointer;
+                                color: $purple;
                             }
                           }
                     }
@@ -314,6 +337,7 @@
         line-height: 32px; /* 177.778% */
         letter-spacing: -0.375px;
         margin-left: 15px;
+        margin-top: 20px;
     }
     & .inputsItemList {
         display: flex;
@@ -384,9 +408,41 @@
                 height: 24px;
                 &:hover {
                     cursor: pointer;
+                    fill: red;
                 }
             }
         }
     }
 }
 
+.item {
+    margin-bottom: 20px;
+}
+
+.addNewItemButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    width: 100%;
+    height: 48px;
+    border-radius: 24px;
+    background-color: #F9FAFE;
+    color: $purpleDerived;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 100% */
+    letter-spacing: -0.25px;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 100% */
+    letter-spacing: -0.25px;
+    &:hover {
+        background-color: $lightViolet;
+        cursor: pointer;
+    }
+}

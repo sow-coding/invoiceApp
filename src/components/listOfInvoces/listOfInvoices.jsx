@@ -5,11 +5,14 @@ import { invoiceListState } from '@/app/invoiceListState'
 import Link from 'next/link'
 import { useRouter } from "next/navigation"
 import Paid from "../states/paid/paid"
+import Pending from "../states/pending/pending"
+import Draft from "../states/draft/draft"
+import { invoiceStatut } from "@/app/invoiceStatut"
 
 
 function Invoice(props) {
   const {invoiceData} = props
-
+  const paidState = useRecoilValue(invoiceStatut)
   if (!invoiceData) {
     return <div>Loading...</div>;
   }
@@ -24,7 +27,10 @@ function Invoice(props) {
         </div>
         <div className={`${styles.invoiceRight}`}>
           <h2>{invoiceData.price} €</h2>
-          <Paid />
+          {invoiceData.statut === "Pending" && <Pending />}
+          {invoiceData.statut === "Draft" && <Draft />}
+          {paidState === "Paid" && <Paid />}
+          {paidState === "Paid" && (invoiceData.statut = "")}
           <svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
             <path d="M1 1L5 5L1 9" stroke="#7C5DFA" stroke-width="2" />
           </svg>
@@ -40,7 +46,6 @@ function ListOfInvoices() {
   const invoiceDisplay = invoicesState.map((invoice) => (
     <Invoice key={invoice.id} invoiceData={invoice}/> 
   ));
-
   return (
     <div className={`${styles.listOfInvoices}`}>
       {invoiceDisplay}
