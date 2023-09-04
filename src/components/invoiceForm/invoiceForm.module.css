@@ -378,9 +378,11 @@
   width: 20px;
   height: 24px;
 }
+.itemList .inputsItemList .total .trash path:hover {
+  fill: red !important;
+}
 .itemList .inputsItemList .total .trash:hover {
   cursor: pointer;
-  fill: red;
 }
 
 .item {

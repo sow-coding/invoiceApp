@@ -406,9 +406,13 @@
                 margin-left: 25px;
                 width: 20px;
                 height: 24px;
+                & path {
+                    &:hover {
+                        fill: red!important;
+                    }
+                }
                 &:hover {
                     cursor: pointer;
-                    fill: red;
                 }
             }
         }
