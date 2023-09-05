@@ -36,4 +36,65 @@
 }
 .sideBar .sideBarBottom .userImage:hover {
   cursor: pointer;
+}
+
+@media (max-width: 1550px) and (min-width: 1300px) {
+  .sideBar {
+    width: 8%;
+  }
+}
+@media (max-width: 1300px) and (min-width: 1150px) {
+  .sideBar {
+    width: 7%;
+  }
+}
+@media (max-width: 1150px) and (min-width: 1000px) {
+  .sideBar {
+    width: 9%;
+  }
+}
+@media (max-width: 1000px) and (min-width: 850px) {
+  .sideBar {
+    width: 8.5%;
+  }
+}
+@media (max-width: 850px) and (min-width: 768px) {
+  .sideBar {
+    width: 9%;
+  }
+}
+@media (max-width: 768px) {
+  .sideBar {
+    height: auto;
+    width: 100%;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 0;
+  }
+  .sideBar .logoContainer {
+    width: 20%;
+  }
+  .sideBar .sideBarBottom {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    align-items: center;
+    margin-right: 40px;
+  }
+  .sideBar .sideBarBottom .row {
+    display: none;
+  }
+}
+@media (max-width: 500px) and (min-width: 400px) {
+  .sideBar .sideBarBottom {
+    width: 19.5%;
+  }
+}
+@media (max-width: 399px) and (min-width: 320px) {
+  .sideBar .sideBarBottom {
+    width: 24%;
+  }
 }/*# sourceMappingURL=sideBar.module.css.map */

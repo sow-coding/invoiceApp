@@ -34,4 +34,11 @@ body .homePage {
 .flex {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .homePage {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }/*# sourceMappingURL=globals.css.map */

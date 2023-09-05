@@ -19,3 +19,12 @@
         background-color: $purpleHover;
     }
 }
+
+@media (max-width: 499px) and (min-width: 320px) {
+    .NewInvoiceButton {
+        width: 80px;
+        & span {
+            display: none;
+        }
+    }
+}

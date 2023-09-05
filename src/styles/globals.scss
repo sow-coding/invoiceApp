@@ -38,3 +38,12 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+//Responsive 
+
+@media (max-width: 768px) {
+    .homePage {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}

@@ -16,4 +16,13 @@
 .NewInvoiceButton:hover {
   cursor: pointer;
   background-color: #9277FF;
+}
+
+@media (max-width: 499px) and (min-width: 320px) {
+  .NewInvoiceButton {
+    width: 80px;
+  }
+  .NewInvoiceButton span {
+    display: none;
+  }
 }/*# sourceMappingURL=newInvoiceBtn.module.css.map */

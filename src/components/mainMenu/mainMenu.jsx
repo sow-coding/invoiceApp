@@ -30,7 +30,7 @@ function MainMenu(props) {
         </div>
         <div className={`${styles.mainMenuRight}`}>
                 <div onClick={() => {setFilter(!filter)}} className={`${styles.filterButton}`} >
-                    <p>Filter by status</p>
+                    <p>Filter <span>by status</span></p>
                     {filter === true ? <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
                     <path d="M1 6.22803L5.2279 2.00013L9.4558 6.22803" stroke="#7C5DFA" stroke-width="2"/>
                     </svg> : 

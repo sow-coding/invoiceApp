@@ -958,4 +958,84 @@
 .MarkAsPaidButton:hover {
   cursor: pointer;
   background-color: #9277FF;
+}
+
+@media (max-width: 1300px) {
+  .invoice {
+    flex-direction: column;
+    align-items: center;
+    height: auto !important;
+  }
+  .invoice .invoiceLeft {
+    width: 100% !important;
+  }
+  .invoice .invoiceRight {
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
+  .invoice svg {
+    display: none;
+  }
+}
+@media (max-width: 768px) and (min-width: 650px) {
+  .listOfInvoices {
+    width: 78%;
+  }
+  .invoice {
+    flex-direction: column;
+    align-items: center;
+    height: auto !important;
+  }
+  .invoice .invoiceLeft {
+    width: 100% !important;
+  }
+  .invoice .invoiceRight {
+    width: 100% !important;
+  }
+  .invoice svg {
+    display: none;
+  }
+}
+@media (max-width: 649px) and (min-width: 500px) {
+  .listOfInvoices {
+    width: 88%;
+  }
+  .invoice {
+    flex-direction: column;
+    align-items: center;
+    height: auto !important;
+  }
+  .invoice .invoiceLeft {
+    width: 100% !important;
+  }
+  .invoice .invoiceRight {
+    width: 100% !important;
+  }
+  .invoice svg {
+    display: none;
+  }
+}
+@media (max-width: 499px) and (min-width: 360px) {
+  .listOfInvoices {
+    width: 93%;
+  }
+  .invoice {
+    flex-direction: column;
+    align-items: center;
+    height: auto !important;
+  }
+  .invoice .invoiceLeft {
+    width: 100% !important;
+  }
+  .invoice .invoiceRight {
+    width: 100% !important;
+  }
+  .invoice svg {
+    display: none;
+  }
+}
+@media (max-width: 359px) and (min-width: 320px) {
+  .listOfInvoices {
+    width: 88%;
+  }
 }/*# sourceMappingURL=listOfInvoices.module.css.map */

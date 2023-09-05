@@ -73,4 +73,95 @@
 
 .flex {
   display: flex !important;
+}
+
+@media (max-width: 1800px) and (min-width: 1600px) {
+  .mainMenu {
+    width: 60%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 35%;
+  }
+}
+@media (max-width: 1600px) and (min-width: 1300px) {
+  .mainMenu {
+    width: 63%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 38%;
+  }
+}
+@media (max-width: 1300px) and (min-width: 1150px) {
+  .mainMenu {
+    width: 66%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 42%;
+  }
+}
+@media (max-width: 1150px) and (min-width: 1000px) {
+  .mainMenu {
+    width: 70%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 45%;
+  }
+}
+@media (max-width: 1000px) and (min-width: 768px) {
+  .mainMenu {
+    width: 75%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 52%;
+  }
+}
+@media (max-width: 768px) and (min-width: 650px) {
+  .mainMenu {
+    width: 80%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 57.5%;
+  }
+}
+@media (max-width: 650px) and (min-width: 500px) {
+  .mainMenu {
+    width: 90%;
+  }
+  .mainMenu .mainMenuRight {
+    width: 62%;
+  }
+  .filterButton {
+    width: 42% !important;
+  }
+}
+@media (max-width: 499px) and (min-width: 360px) {
+  .mainMenu {
+    width: 95%;
+  }
+  .mainMenu .mainMenuLeft h1 {
+    font-size: 28px;
+  }
+  .mainMenu .mainMenuRight {
+    width: 63%;
+  }
+  .filterButton {
+    width: 52% !important;
+  }
+}
+@media (max-width: 359px) and (min-width: 320px) {
+  .mainMenu {
+    width: 90%;
+  }
+  .mainMenu .mainMenuLeft h1 {
+    font-size: 25px;
+  }
+  .mainMenu .mainMenuRight {
+    width: 50%;
+  }
+  .mainMenu .mainMenuRight span {
+    display: none;
+  }
+  .filterButton {
+    width: 32% !important;
+  }
 }/*# sourceMappingURL=mainMenu.module.css.map */
