@@ -255,7 +255,7 @@ const InvoiceForm = () => {
 
     <div className={`${styles.scrollableContainer}`}>
       <div className={`${styles.newInvoiceFormContainer}`}>
-        <SideBar position="relative"/>
+        <SideBar position="relative" customClassName={`${styles.customSideBar}`}/>
         <form onClick={() => {
           //paymentTermsUnRoll === "flex" && setPaymentTermsUnRoll("none")
           isDropdownOpen && setDropdownOpen(false)

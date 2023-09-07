@@ -415,4 +415,158 @@
 .addNewItemButton:hover {
   background-color: #DFE3FA;
   cursor: pointer;
+}
+
+@media (max-width: 1650px) and (min-width: 1450px) {
+  .newInvoiceFormContainer {
+    width: 60% !important;
+  }
+}
+@media (max-width: 1449px) and (min-width: 1300px) {
+  .newInvoiceFormContainer {
+    width: 67% !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 44% !important;
+  }
+}
+@media (max-width: 1229px) and (min-width: 1050px) {
+  .newInvoiceFormContainer {
+    width: 72% !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 52% !important;
+  }
+}
+@media (max-width: 1049px) and (min-width: 900px) {
+  .newInvoiceFormContainer {
+    width: 77% !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 58% !important;
+  }
+}
+@media (max-width: 899px) and (min-width: 769px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 50% !important;
+  }
+}
+@media (max-width: 768px) and (min-width: 600px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm {
+    width: 100vw !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 50% !important;
+  }
+  .customSideBar {
+    display: none;
+  }
+}
+@media (max-width: 599px) and (min-width: 500px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm {
+    width: 100vw !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 55% !important;
+  }
+  .customSideBar {
+    display: none;
+  }
+}
+@media (max-width: 499px) and (min-width: 450px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm {
+    width: 100vw !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 60% !important;
+  }
+  .customSideBar {
+    display: none;
+  }
+}
+@media (max-width: 449px) and (min-width: 400px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm {
+    width: 100vw !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 65% !important;
+  }
+  .customSideBar {
+    display: none;
+  }
+}
+@media (max-width: 399px) and (min-width: 350px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm {
+    width: 100vw !important;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 73% !important;
+  }
+  .invoiceForm .formButtonsRight button {
+    width: 108px !important;
+    margin: 0 2.5px;
+  }
+  .customSideBar {
+    display: none;
+  }
+}
+@media (max-width: 349px) and (min-width: 300px) {
+  .newInvoiceFormContainer {
+    width: 100vw !important;
+  }
+  .newInvoiceFormQuit {
+    display: none;
+  }
+  .invoiceForm {
+    width: 100vw !important;
+  }
+  .invoiceForm .formButtonsLeft button {
+    width: 80px;
+  }
+  .invoiceForm .formButtonsRight {
+    width: 79% !important;
+  }
+  .invoiceForm .formButtonsRight button {
+    width: 105px !important;
+    margin: 1.5px;
+  }
+  .customSideBar {
+    display: none;
+  }
 }/*# sourceMappingURL=invoiceForm.module.css.map */
