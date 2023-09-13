@@ -1,12 +1,18 @@
 @import "../variables";
 
+.translate {
+    transform: translateX(-100%); /* Start off-screen to the left */
+}
+
+.slideIn {
+    transition: transform 0.3s ease-in-out; /* Transition for smooth animation */
+  }
 
 .scrollableContainer {
     width: 100vw;
     position: fixed;
     height: 100vh;
     display: flex;
-    
 
     & .newInvoiceFormContainer {
         width: 50%;
@@ -451,6 +457,8 @@
     }
 }
 
+
+
 //Responsive
 
 @media (max-width: 1650px) and (min-width: 1450px) {
@@ -520,7 +528,7 @@
         }
     }
     .customSideBar {
-        display: none;
+        display: none!important;
     }
 }
 
@@ -538,7 +546,7 @@
         }
     }
     .customSideBar {
-        display: none;
+        display: none!important;
     }
 }
 
@@ -556,7 +564,7 @@
         }
     }
     .customSideBar {
-        display: none;
+        display: none!important;
     }
 }
 
@@ -574,7 +582,7 @@
         }
     }
     .customSideBar {
-        display: none;
+        display: none!important;
     }
 }
 
@@ -596,7 +604,7 @@
         }
     }
     .customSideBar {
-        display: none;
+        display: none!important;
     }
 }
 
@@ -623,7 +631,7 @@
         }
     }
     .customSideBar {
-        display: none;
+        display: none!important;
     }
 }
 

@@ -35,7 +35,6 @@ function InvoiceDetails() {
   const data = searchParams.get("data")
   const invoiceData = JSON.parse(data)
   const itemListArray = invoiceData.itemListArray
-  console.log(itemListArray)
   const [formData, setFormData] = useState(invoiceData)
   const invoicesArray = useRecoilValue(invoiceListState)
   const [items, setItems] = useState([])
@@ -103,8 +102,10 @@ function InvoiceDetails() {
 
           setInvoiceList([...invoiceList, newInvoiceList])
           setPaid("Paid")
+          router.push('/')
+          //invoiceData.statut = "Paid"
         }
-          } className={`${styles.MarkAsPaidButton}`}>
+          } className={`${styles.MarkAsPaidButton} ${invoiceData.statut === "Draft" && styles.unclickable}`}>
             <p>Mark as Paid</p>
         </div>
       )
@@ -134,7 +135,8 @@ function InvoiceDetails() {
 
     function EditBtn() {
       return (
-        <div onClick={() => {editBtnClicked()}} className={`${styles.editButton}`}>
+        <div onClick={() => {editBtnClicked()}} className={`${styles.editButton} ${invoiceData.statut === "Paid"
+        && styles.unclickable}`}>
             <p>Edit</p>
         </div>
       )
@@ -301,9 +303,7 @@ function InvoiceDetails() {
           
                       <div className={`${styles.total}`}>
                         <div className={`${styles.totalPrice}`}>
-                          <h5>Total</h5>
-                          {/* METTRE UN STATE POUR RETENIR CE QUI EST ECRIT DANS ITEM QTY ET ITEM PRICE */}
-                          <p>??</p>
+
                         </div>
                         <svg className={`${styles.trash}`} xmlns="http://www.w3.org/2000/svg" width="13" height="16" viewBox="0 0 13 16" fill="none">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M8.47225 0L9.36117 0.888875H12.4722V2.66667H0.027832V0.888875H3.13892L4.02783 0H8.47225ZM2.6945 16C1.71225 16 0.916707 15.2045 0.916707 14.2222V3.55554H11.5834V14.2222C11.5834 15.2045 10.7878 16 9.80562 16H2.6945Z" fill="#888EB0"/>
@@ -523,10 +523,11 @@ function InvoiceDetails() {
         <div className={`${styles.invoiceDetailsCenterLeft}`}>
           <p>Status</p>
           {/* REGLER PROBLEME DE STATE ICI */}
-          {changeStatut && paid === "Paid" && (invoiceData.statut = "")}
-          {changeStatut && invoiceData.statut === "" && <Paid />}
+          {/*changeStatut && paid === "Paid" && (invoiceData.statut = "")*/}
+          {/*changeStatut && invoiceData.statut === "" && <Paid />*/}
           {invoiceData.statut === "Pending" && <Pending />}
           {invoiceData.statut === "Draft" && <Draft />}
+          {invoiceData.statut === "Pending" || invoiceData.statut === "Draft" === false && <Paid/>}
         </div>
         <div className={`${styles.invoiceDetailsCenterRight}`}>
           <EditBtn />
@@ -557,19 +558,19 @@ function InvoiceDetails() {
         </div>
 
         <div className={`${styles.invoiceDetailsBottomCenter}`}>
-          
           <div className={`${styles.invoiceDetailsBottomCenterLeft}`}>
-            <div className={`${styles.invoiceDetailsBottomCenterLeftTop}`}>
+          <div className={`${styles.invoiceDetailsBottomCenterLeftLeft}`}>
+            <div className={`${styles.invoiceDetailsBottomCenterLeftLeftTop}`}>
               <p>Invoice Date</p>
               <h3>{formData.invoiceDate}</h3>
             </div>
-            <div className={`${styles.invoiceDetailsBottomCenterLeftBottom}`}>
+            <div className={`${styles.invoiceDetailsBottomCenterLeftLeftBottom}`}>
               <p>Payment Due</p>
               <h3>{formData.paymentTerms}</h3>
             </div>
           </div>
 
-          <div className={`${styles.invoiceDetailsBottomCenterCenter}`}>
+          <div className={`${styles.invoiceDetailsBottomCenterLeftRight}`}>
             <p>Bill to</p>
             <div className="clientInfos">
               <h3>{formData.clientName}</h3>
@@ -578,6 +579,7 @@ function InvoiceDetails() {
               <p>{formData.clientPostCode}</p>
               <p>{formData.clientCountry}</p>
             </div>
+          </div>
           </div>
 
           <div className={`${styles.invoiceDetailsBottomCenterRight}`}>
@@ -612,7 +614,15 @@ function InvoiceDetails() {
               </div>
               ))}
               </div>
-
+              <div className={`${styles.invoiceDetailsButtons}`}>
+                <div className={`${styles.invoiceDetailsButtonsLeft}`}>
+                  <EditBtn />
+                </div>
+                <div className={`${styles.invoiceDetailsButtonsRight}`}>
+                  <DeleteButton />
+                  <MarkAsPaidButton />
+                </div>
+              </div>
               <div className={`${styles.invoiceDetailsBottomBottomBottom}`}>
                 <p>Amont Due</p>
                 <h1>{totalPrice.toFixed(2)} €</h1>

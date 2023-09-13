@@ -1,6 +1,6 @@
 "use client"
 import styles from "./listOfInvoices.module.css"
-import {useRecoilValue} from 'recoil'
+import {useRecoilState, useRecoilValue} from 'recoil'
 import { invoiceListState } from '@/app/invoiceListState'
 import Link from 'next/link'
 import Paid from "../states/paid/paid"
@@ -10,6 +10,7 @@ import { invoiceStatut } from "@/app/invoiceStatut"
 import { draft } from "@/app/draft"
 import { pending } from "@/app/pending"
 import { paid } from "@/app/paid"
+import { invoiceNumbers } from "@/app/invoiceNumbers"
 
 
 
@@ -47,6 +48,7 @@ function ListOfInvoices() {
   const pendingStatut = useRecoilValue(pending)
   const paidStatut = useRecoilValue(paid)
   const invoicesState = useRecoilValue(invoiceListState);
+  const [invoiceNumber, setInvoiceNumber] = useRecoilState(invoiceNumbers)
   function deleteAllButLastWithSameId(objects) {
     const idMap = {}; // Create a map to store objects by ID
   
@@ -64,6 +66,7 @@ function ListOfInvoices() {
     return uniqueObjects;
   }
   const uniquesInvoice = deleteAllButLastWithSameId(invoicesState)
+  setInvoiceNumber(uniquesInvoice.length)
 
   const draftDesiredStatut = ['Draft'];
   const filteredDraftInvoices = uniquesInvoice.filter((invoice) => {

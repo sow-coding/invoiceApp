@@ -10,6 +10,7 @@ import { filterMenu } from "@/app/filterMenu"
 import { draft } from "@/app/draft"
 import { pending } from "@/app/pending"
 import { paid } from "@/app/paid"
+import { invoiceNumbers } from "@/app/invoiceNumbers"
 
 
 function MainMenu(props) {
@@ -19,13 +20,14 @@ function MainMenu(props) {
     const [draftOnly, setDraftOnly] = useRecoilState(draft)
     const [pendingOnly, setPendingOnly] = useRecoilState(pending)
     const [paidOnly, setPaidOnly] = useRecoilState(paid)
+    const invoiceNumber = useRecoilValue(invoiceNumbers)
     return (
     <div className={`${styles.mainMenu} ${display && styles.displayNone}`}>
         <div className={`${styles.mainMenuLeft}`}>
             <h1>Invoices</h1>
             {/* METTRE LE LENGTH DE UNIQUESVOICES ET NON INVOICESSTATE */}
-            {invoicesState.length === 0 ? <p>No invoices</p> :
-            <p>There are {invoicesState.length} total invoices</p>
+            {invoiceNumber === 0 ? <p>No invoices</p> :
+            <p>There are {invoiceNumber} total invoices</p>
 }
         </div>
         <div className={`${styles.mainMenuRight}`}>

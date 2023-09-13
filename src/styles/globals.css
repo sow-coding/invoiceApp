@@ -36,6 +36,19 @@ body .homePage {
   flex-direction: column;
 }
 
+.unclickable {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
 @media (max-width: 768px) {
   .homePage {
     flex-direction: column;

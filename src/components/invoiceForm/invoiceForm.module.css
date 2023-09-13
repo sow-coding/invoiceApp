@@ -1,3 +1,11 @@
+.translate {
+  transform: translateX(-100%); /* Start off-screen to the left */
+}
+
+.slideIn {
+  transition: transform 0.3s ease-in-out; /* Transition for smooth animation */
+}
+
 .scrollableContainer {
   width: 100vw;
   position: fixed;
@@ -471,7 +479,7 @@
     width: 50% !important;
   }
   .customSideBar {
-    display: none;
+    display: none !important;
   }
 }
 @media (max-width: 599px) and (min-width: 500px) {
@@ -488,7 +496,7 @@
     width: 55% !important;
   }
   .customSideBar {
-    display: none;
+    display: none !important;
   }
 }
 @media (max-width: 499px) and (min-width: 450px) {
@@ -505,7 +513,7 @@
     width: 60% !important;
   }
   .customSideBar {
-    display: none;
+    display: none !important;
   }
 }
 @media (max-width: 449px) and (min-width: 400px) {
@@ -522,7 +530,7 @@
     width: 65% !important;
   }
   .customSideBar {
-    display: none;
+    display: none !important;
   }
 }
 @media (max-width: 399px) and (min-width: 350px) {
@@ -543,7 +551,7 @@
     margin: 0 2.5px;
   }
   .customSideBar {
-    display: none;
+    display: none !important;
   }
 }
 @media (max-width: 349px) and (min-width: 300px) {
@@ -567,6 +575,6 @@
     margin: 1.5px;
   }
   .customSideBar {
-    display: none;
+    display: none !important;
   }
 }/*# sourceMappingURL=invoiceForm.module.css.map */
