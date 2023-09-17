@@ -154,7 +154,7 @@ function InvoiceDetails() {
 
     function SaveAndSendButton() {
       return (
-        <button className={`${styles.saveAndSendButton}`} type='submit'>Save and Send</button>
+        <button onClick={() => {invoiceData.statut === "Draft" && router.push('/')}} className={`${styles.saveAndSendButton}`} type='submit'>Save and Send</button>
       )
     }
 

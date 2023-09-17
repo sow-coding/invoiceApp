@@ -15,11 +15,21 @@ import { invoiceNumbers } from "@/app/invoiceNumbers"
 
 
 function Invoice(props) {
+  
   const {invoiceData} = props
   //const paidState = useRecoilValue(invoiceStatut)
   if (!invoiceData) {
     return <div>Loading...</div>;
   }
+
+  const itemListArrays = invoiceData.itemListArray
+
+  const totalPrice = itemListArrays.reduce((accumulator, item, index) => {
+    const price = parseFloat(item[`price${index}`]); // Convert price to a number
+    const quantity = parseFloat(item[`itemQuantity${index}`]); // Convert quantity to a number
+    return accumulator + price * quantity; // Add the product of price and quantity to the accumulator
+  }, 0);
+
   return (
    <Link className={`${styles.link}`} href={`/invoice/${invoiceData.id}?data=${JSON.stringify(invoiceData)}`}>
       <div className={`${styles.invoice}`}>
@@ -29,7 +39,7 @@ function Invoice(props) {
           <p>{invoiceData.clientName}</p>
         </div>
         <div className={`${styles.invoiceRight}`}>
-          <h2>{invoiceData.price} €</h2>
+          <h2>{totalPrice} €</h2>
           {invoiceData.statut === "Pending" && <Pending />}
           {invoiceData.statut === "Draft" && <Draft />}
           {invoiceData.statut === "Paid" && <Paid />}

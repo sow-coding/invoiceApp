@@ -20,7 +20,6 @@ import { itemListInDetailsPage } from '@/app/itemListInDetailsPage';
 //FAIRE SYSTEME DE VALIDATION FORM !
 const formSchema = yup.object().shape({
   address: yup.string(),
-
 })
 
 
