@@ -54,7 +54,7 @@ function InvoiceDetails() {
     const [editForm, setEditForm] = useState(false)
 
     function deleteObjectById(e) {
-      const updatedInvoiceArray = invoicesArray.filter((obj) => `http://localhost:3000/invoice/${obj.id}` !== e.target.baseURI);
+      const updatedInvoiceArray = invoicesArray.filter((obj) => `invoice-app-eosin-alpha.vercel.app/invoice/${obj.id}` !== e.target.baseURI);
       {/* DELETE DANS L'API */}
       setInvoiceList(updatedInvoiceArray)
     }
